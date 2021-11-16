@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
+import { useState } from "react";
 import './App.css';
+import Navbar from "./component/Navbar/Navbar.js";
+import { Data } from "./component/Movies/movies.js";
+
+const data = Data.results;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const [isAddMovieShowing, setIsAddMovieShowing] = useState(false);
+  const [Data, setData] = useState(data);
+  const addMovie = (myMovie) => {
+    setData([...Data, myMovie]);
+  };
 
-export default App;
+
+  return (
+    <div>
+    <Navbar
+    setIsAddMovieShowing={setIsAddMovieShowing}
+    isAddMovieShowing={isAddMovieShowing}
+    /> 
+      <Movies/>
+    </div>
+
+  );
+  }
+
+export default app ;
